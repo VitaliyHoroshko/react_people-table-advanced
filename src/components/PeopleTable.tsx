@@ -60,7 +60,6 @@ export const PeopleTable: React.FC<Props> = ({
 
       <tbody>
         {people.map(person => {
-          // Важливо: перевіряємо чи ця людина зараз вибрана через URL
           const isSelected = person.slug === personSlug;
           const mother = findPersonByName(person.motherName || '');
           const father = findPersonByName(person.fatherName || '');
@@ -81,7 +80,6 @@ export const PeopleTable: React.FC<Props> = ({
                     'has-text-info': person.sex === 'm',
                   })}
                   to={{
-                    // Якщо вже вибрана — знімаємо виділення, якщо ні — переходим до неї
                     pathname: isSelected ? '/people' : `/people/${person.slug}`,
                     search: searchParams.toString(),
                   }}

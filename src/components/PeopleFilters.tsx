@@ -43,9 +43,11 @@ export const PeopleFilters = () => {
             value={query}
             onChange={e => {
               const newParams = new URLSearchParams(searchParams);
+              const trimmedValue = e.target.value.trim();
 
-              if (e.target.value.trim()) {
-                newParams.set('query', e.target.value);
+              if (trimmedValue) {
+                // Записуємо ВЖЕ ОБРІЗАНИЙ рядок
+                newParams.set('query', trimmedValue);
               } else {
                 newParams.delete('query');
               }
