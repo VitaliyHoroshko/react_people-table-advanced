@@ -80,7 +80,7 @@ export const PeopleTable: React.FC<Props> = ({
                     'has-text-info': person.sex === 'm',
                   })}
                   to={{
-                    pathname: isSelected ? '/people' : `/people/${person.slug}`,
+                    pathname: `/people/${person.slug}`,
                     search: searchParams.toString(),
                   }}
                 >
@@ -91,8 +91,8 @@ export const PeopleTable: React.FC<Props> = ({
               <td>{person.born}</td>
               <td>{person.died}</td>
               <td>
-                {person.motherName ? (
-                  mother ? (
+                {person.motherName &&
+                  (mother ? (
                     <Link
                       className="has-text-danger"
                       to={{
@@ -104,14 +104,14 @@ export const PeopleTable: React.FC<Props> = ({
                     </Link>
                   ) : (
                     <span>{person.motherName}</span>
-                  )
-                ) : (
+                  ))}
+                {!person.motherName && (
                   <span className="has-text-grey-light">-</span>
                 )}
               </td>
               <td>
-                {person.fatherName ? (
-                  father ? (
+                {person.fatherName &&
+                  (father ? (
                     <Link
                       to={{
                         pathname: `/people/${father.slug}`,
@@ -122,8 +122,8 @@ export const PeopleTable: React.FC<Props> = ({
                     </Link>
                   ) : (
                     <span>{person.fatherName}</span>
-                  )
-                ) : (
+                  ))}
+                {!person.fatherName && (
                   <span className="has-text-grey-light">-</span>
                 )}
               </td>

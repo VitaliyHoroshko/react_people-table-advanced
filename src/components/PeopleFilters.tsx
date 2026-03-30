@@ -46,7 +46,6 @@ export const PeopleFilters = () => {
               const trimmedValue = e.target.value.trim();
 
               if (trimmedValue) {
-                // Записуємо ВЖЕ ОБРІЗАНИЙ рядок
                 newParams.set('query', trimmedValue);
               } else {
                 newParams.delete('query');
